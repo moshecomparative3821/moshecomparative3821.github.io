@@ -3,244 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>北门NB · 猫娘互动</title>
+    <!-- ===== 网页标签已改为「北门NB」 ===== -->
+    <title>北门NB</title>
 
     <!-- ===== 可爱二次元小猫 Favicon ===== -->
-    <!-- 使用内联 SVG 二次元猫娘头像，纯矢量，适配所有尺寸 -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='55' r='36' fill='%23FAD9C1'/%3E%3Cpath d='M18 30 L35 6 L46 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M25 26 L35 12 L42 26 Z' fill='%23FFB6C1'/%3E%3Cpath d='M54 30 L65 6 L82 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M58 26 L65 12 L75 26 Z' fill='%23FFB6C1'/%3E%3Cellipse cx='35' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='32' cy='46' r='3' fill='white'/%3E%3Ccircle cx='38' cy='52' r='1.5' fill='white'/%3E%3Cellipse cx='65' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='62' cy='46' r='3' fill='white'/%3E%3Ccircle cx='68' cy='52' r='1.5' fill='white'/%3E%3Cpolygon points='46,59 54,59 50,63' fill='%23FF8A9B'/%3E%3Cpath d='M43 68 Q50 74 57 68' stroke='%232D2D2D' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3Cline x1='10' y1='55' x2='30' y2='59' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='10' y1='62' x2='30' y2='64' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='59' x2='90' y2='55' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='64' x2='90' y2='62' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='24' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3Cellipse cx='76' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3C/svg%3E" />
-    <!-- 兼容旧版浏览器 / iOS 备用 -->
     <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='55' r='36' fill='%23FAD9C1'/%3E%3Cpath d='M18 30 L35 6 L46 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M25 26 L35 12 L42 26 Z' fill='%23FFB6C1'/%3E%3Cpath d='M54 30 L65 6 L82 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M58 26 L65 12 L75 26 Z' fill='%23FFB6C1'/%3E%3Cellipse cx='35' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='32' cy='46' r='3' fill='white'/%3E%3Ccircle cx='38' cy='52' r='1.5' fill='white'/%3E%3Cellipse cx='65' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='62' cy='46' r='3' fill='white'/%3E%3Ccircle cx='68' cy='52' r='1.5' fill='white'/%3E%3Cpolygon points='46,59 54,59 50,63' fill='%23FF8A9B'/%3E%3Cpath d='M43 68 Q50 74 57 68' stroke='%232D2D2D' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3Cline x1='10' y1='55' x2='30' y2='59' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='10' y1='62' x2='30' y2='64' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='59' x2='90' y2='55' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='64' x2='90' y2='62' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='24' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3Cellipse cx='76' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3C/svg%3E" />
 
+    <!-- ===== 看源代码者SM！！（注释版） ===== -->
+    <!-- 看源代码者SM！！ -->
+
     <style>
-        /* 全局重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-image: url('https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEZrIlqimvLuWJ2rLTqJ60yWkBSfQIGsQACcicAAkreUVS3acnz8W7Itj0E.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center center;
-            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
-            color: #ffffff;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-
-        /* 卡片容器 */
-        .brand-card {
-            background-color: rgba(20, 20, 30, 0.55);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            padding: 2.2rem 3rem;
-            border-radius: 32px;
-            max-width: 700px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        /* 北门NB 大字 */
-        h1 {
-            font-size: 5.5rem;
-            font-weight: 900;
-            letter-spacing: 6px;
-            text-shadow: 4px 4px 16px rgba(0, 0, 0, 0.85);
-            word-break: keep-all;
-            margin: 0 0 0.6rem 0;
-        }
-
-        .sub {
-            font-size: 0.9rem;
-            letter-spacing: 6px;
-            opacity: 0.7;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            padding-bottom: 1rem;
-        }
-
-        /* 按钮组（原样保留，仅微调间距） */
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 0.5rem;
-            margin-bottom: 1.8rem;
-            /* 与游戏区拉开距离 */
-        }
-
-        .btn {
-            flex: 1 1 180px;
-            min-width: 140px;
-            padding: 0.9rem 1.2rem;
-            border: none;
-            border-radius: 60px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.25s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-            font-family: inherit;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            background: rgba(255, 255, 255, 0.22);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .btn:active {
-            transform: translateY(1px) scale(0.97);
-        }
-
-        .btn-nekobounce {
-            background: rgba(100, 180, 255, 0.20);
-            border-color: rgba(100, 180, 255, 0.35);
-        }
-        .btn-nekobounce:hover {
-            background: rgba(100, 180, 255, 0.32);
-            border-color: rgba(100, 200, 255, 0.6);
-        }
-
-        .btn-涩涩 {
-            background: rgba(255, 120, 180, 0.20);
-            border-color: rgba(255, 120, 180, 0.35);
-        }
-        .btn-涩涩:hover {
-            background: rgba(255, 120, 180, 0.32);
-            border-color: rgba(255, 150, 200, 0.6);
-        }
-
-        /* ========= 猫娘互动游戏区 ========= */
-        .game-area {
-            margin-top: 0.8rem;
-            padding: 1.2rem 1rem;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            transition: all 0.2s;
-            user-select: none;
-        }
-
-        .game-area .cat-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            padding: 0.4rem 0;
-        }
-
-        .cat-avatar {
-            font-size: 4.8rem;
-            line-height: 1.2;
-            transition: transform 0.2s ease;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
-        }
-
-        .cat-avatar:hover {
-            transform: scale(1.08) rotate(-4deg);
-        }
-
-        .cat-avatar:active {
-            transform: scale(0.92) rotate(2deg);
-        }
-
-        .cat-speech {
-            font-size: 1.2rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.5rem 1.8rem;
-            border-radius: 60px;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            min-height: 3.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s;
-            color: #fff6e8;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
-        /* 点击提示小字 */
-        .cat-hint {
-            font-size: 0.75rem;
-            opacity: 0.5;
-            letter-spacing: 2px;
-            margin-top: 0.2rem;
-        }
-
-        /* 移动端适配 */
-        @media (max-width: 550px) {
-            h1 {
-                font-size: 3.8rem;
-                letter-spacing: 3px;
-            }
-            .brand-card {
-                padding: 1.8rem 1.5rem;
-            }
-            .btn {
-                font-size: 1.1rem;
-                padding: 0.75rem 1rem;
-                min-width: 120px;
-                flex: 1 1 140px;
-            }
-            .sub {
-                font-size: 0.75rem;
-                letter-spacing: 4px;
-            }
-            .cat-avatar {
-                font-size: 3.8rem;
-            }
-            .cat-speech {
-                font-size: 1rem;
-                padding: 0.4rem 1.2rem;
-                min-height: 2.8rem;
-            }
-            .game-area {
-                padding: 1rem 0.8rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .button-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .btn {
-                flex: 1 1 auto;
-                width: 100%;
-            }
-        }
+        /* ===== 样式压缩（增加阅读难度） ===== */
+        *{margin:0;padding:0;box-sizing:border-box}body{background-image:url('https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEZrIlqimvLuWJ2rLTqJ60yWkBSfQIGsQACcicAAkreUVS3acnz8W7Itj0E.png');background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-position:center center;font-family:'Segoe UI','PingFang SC',Roboto,'Helvetica Neue',sans-serif;color:#ffffff;text-shadow:2px 2px 8px rgba(0,0,0,0.7);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem}.brand-card{background-color:rgba(20,20,30,0.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);padding:2.2rem 3rem;border-radius:32px;max-width:700px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.15);text-align:center;transition:all 0.2s}h1{font-size:5.5rem;font-weight:900;letter-spacing:6px;text-shadow:4px 4px 16px rgba(0,0,0,0.85);word-break:keep-all;margin:0 0 0.6rem 0}.sub{font-size:0.9rem;letter-spacing:6px;opacity:0.7;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1rem}.button-group{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:0.5rem;margin-bottom:1.8rem}.btn{flex:1 1 180px;min-width:140px;padding:0.9rem 1.2rem;border:none;border-radius:60px;font-size:1.3rem;font-weight:700;letter-spacing:2px;color:#ffffff;background:rgba(255,255,255,0.12);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);border:1px solid rgba(255,255,255,0.25);box-shadow:0 8px 20px rgba(0,0,0,0.3);cursor:pointer;transition:all 0.25s ease;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;text-shadow:2px 2px 6px rgba(0,0,0,0.6);font-family:inherit}.btn:hover{transform:translateY(-3px) scale(1.02);background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5);box-shadow:0 14px 30px rgba(0,0,0,0.5)}.btn:active{transform:translateY(1px) scale(0.97)}.btn-nekobounce{background:rgba(100,180,255,0.20);border-color:rgba(100,180,255,0.35)}.btn-nekobounce:hover{background:rgba(100,180,255,0.32);border-color:rgba(100,200,255,0.6)}.btn-涩涩{background:rgba(255,120,180,0.20);border-color:rgba(255,120,180,0.35)}.btn-涩涩:hover{background:rgba(255,120,180,0.32);border-color:rgba(255,150,200,0.6)}.game-area{margin-top:0.8rem;padding:1.2rem 1rem;background:rgba(255,255,255,0.06);border-radius:28px;border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);transition:all 0.2s;user-select:none}.game-area .cat-container{display:flex;flex-direction:column;align-items:center;gap:0.5rem;cursor:pointer;padding:0.4rem 0}.cat-avatar{font-size:4.8rem;line-height:1.2;transition:transform 0.2s ease;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4))}.cat-avatar:hover{transform:scale(1.08) rotate(-4deg)}.cat-avatar:active{transform:scale(0.92) rotate(2deg)}.cat-speech{font-size:1.2rem;font-weight:500;letter-spacing:1px;background:rgba(0,0,0,0.25);padding:0.5rem 1.8rem;border-radius:60px;backdrop-filter:blur(2px);border:1px solid rgba(255,255,255,0.08);min-height:3.2rem;display:flex;align-items:center;justify-content:center;transition:all 0.25s;color:#fff6e8;text-shadow:0 2px 6px rgba(0,0,0,0.5);max-width:90%;margin:0 auto}.cat-hint{font-size:0.75rem;opacity:0.5;letter-spacing:2px;margin-top:0.2rem}.footer-slogan{font-size:0.9rem;font-weight:bold;color:#ff6b6b;text-shadow:0 0 12px rgba(255,0,0,0.4);margin-top:1.2rem;letter-spacing:2px;opacity:0.8;transition:all 0.2s}.footer-slogan:hover{opacity:1;transform:scale(1.05)}@media (max-width:550px){h1{font-size:3.8rem;letter-spacing:3px}.brand-card{padding:1.8rem 1.5rem}.btn{font-size:1.1rem;padding:0.75rem 1rem;min-width:120px;flex:1 1 140px}.sub{font-size:0.75rem;letter-spacing:4px}.cat-avatar{font-size:3.8rem}.cat-speech{font-size:1rem;padding:0.4rem 1.2rem;min-height:2.8rem}.game-area{padding:1rem 0.8rem}.footer-slogan{font-size:0.75rem}}@media (max-width:400px){.button-group{flex-direction:column;align-items:stretch}.btn{flex:1 1 auto;width:100%}}
     </style>
 </head>
 <body>
@@ -248,17 +23,11 @@
         <h1>北门NB</h1>
         <div class="sub">✦ 不止于北门 ✦</div>
 
-        <!-- 按钮组（完全保留原样） -->
         <div class="button-group">
-            <a href="https://nekobounce.qzz.io/" target="_blank" rel="noopener noreferrer" class="btn btn-nekobounce">
-                🐾 nekobounce
-            </a>
-            <a href="https://www.pixiv.net/users/104419511" target="_blank" rel="noopener noreferrer" class="btn btn-涩涩">
-                ✦ 涩涩
-            </a>
+            <a href="https://nekobounce.qzz.io/" target="_blank" rel="noopener noreferrer" class="btn btn-nekobounce">🐾 nekobounce</a>
+            <a href="https://www.pixiv.net/users/104419511" target="_blank" rel="noopener noreferrer" class="btn btn-涩涩">✦ 涩涩</a>
         </div>
 
-        <!-- ===== 猫娘互动游戏 ===== -->
         <div class="game-area" id="gameArea">
             <div class="cat-container" id="catContainer">
                 <div class="cat-avatar" id="catAvatar">😺</div>
@@ -266,87 +35,90 @@
                 <div class="cat-hint">✦ 点击猫娘互动 ✦</div>
             </div>
         </div>
+
+        <!-- ===== 看源代码者SM！！（页面可见） ===== -->
+        <div class="footer-slogan">看源代码者SM！！</div>
     </div>
 
     <script>
+        // ================================================================
+        // 1. 反调试：屏蔽右键、F12、Ctrl+Shift+I、Ctrl+U
+        // ================================================================
         (function() {
-            // 猫娘台词库（可自由扩充）
-            const speeches = [
-                "喵～ 你好呀！",
-                "今天也元气满满！",
-                "最喜欢你啦 ❤️",
-                "要一起玩吗？",
-                "摸摸头～ (´▽`ʃ♡)ƪ",
-                "北门最棒了！",
-                "嘿嘿，好开心～",
-                "给你小鱼干 🐟",
-                "晚上好喵～",
-                "我超可爱的！",
-                "抱抱～ (*≧▽≦)",
-                "你点我干嘛啦 >_<",
-                "再点我就要生气了！",
-                "骗你的，我才不生气呢",
-                "一起去看星星吧 ✨",
-                "喵喵喵～",
-                "今天的月亮好圆",
-                "要听我唱歌吗？",
-                "我是你的猫娘哦",
-                "最喜欢这个网页了！"
-            ];
+            document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 
-            // DOM 元素
-            const avatar = document.getElementById('catAvatar');
-            const speech = document.getElementById('catSpeech');
-            const container = document.getElementById('catContainer');
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F12' ||
+                    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) ||
+                    (e.ctrlKey && (e.key === 'U' || e.key === 'u'))
+                ) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        })();
 
-            // 当前状态（用于表情切换）
-            let emojiState = 0;
-            const emojis = ['😺', '😸', '😻', '😽', '🙀', '😹', '🐱', '😼'];
+        // ================================================================
+        // 2. 核心逻辑混淆：台词 Base64 编码 + eval 动态执行
+        // ================================================================
+        (function() {
+            var encodedSpeeches = "WyLllpzvvIEg5L2g5aW96ZSB77yBIiwi5LuK5aSp5Lmf5YWD5rCS5rOh5rOh77yBIiwi5pyA5Zac5q2k5L2g5ZKMIOKdpSIsIumAoeS4gOiDveebnOWQj++8nyIsIuaTjemjqOS6pO+8iCDDl8qUYPCdpY3igKUpzqAiLCLljJflpKnmnIDmoKznrqHvvIEiLCLlpbvppp3vvIzlpb3lv6Dlvp/vvZ0iLCLnu5PkvaDlsI/lsI/kurAg8J+QnyIsIuaJmOS4iuiZveWWnO+8nyIsIuaIkeW4teaVj+eIseeahO+8gSIsIuaKleaWke+8iCAo4oCg4omh4p2h4oig4omhKSwg5LqG5b6F77yIIiwi5L2g54K55oiR5bm455yL5ZKWID4vXyIsIuWGjeWnguiJveWwkeimgeecn+acje+8gSIsIqmp5L2g55qE77yM5oiR5omN5LiN5rCR5rCR5ZGiIiwi5LiA6LW35Y675Yy75pif5pif5ZCnIOKcrCIsIuWWnOWWnOWWnO+8nyIsIuS7iuWkjeeahOaciOWLmeW9seiKnSIsIumAoOWQjeaIkeWUuuajgOWNge+8nyIsIuaIkeaYr+S9oOeahOeMn+WtqeaWrCIsIuacgOWklui/mei/kei/geS4quW3tOacgO+8gSJ9";
 
-            // 随机获取一句台词
+            function base64Decode(str) {
+                try {
+                    var binary = atob(str);
+                    var bytes = new Uint8Array(binary.length);
+                    for (var i = 0; i < binary.length; i++) {
+                        bytes[i] = binary.charCodeAt(i);
+                    }
+                    return new TextDecoder('utf-8').decode(bytes);
+                } catch (e) {
+                    return '';
+                }
+            }
+
+            var decoded = base64Decode(encodedSpeeches);
+            var speeches = JSON.parse(decoded);
+
+            var avatar = document.getElementById('catAvatar');
+            var speech = document.getElementById('catSpeech');
+            var container = document.getElementById('catContainer');
+
+            var emojiState = 0;
+            var emojis = ['😺', '😸', '😻', '😽', '🙀', '😹', '🐱', '😼'];
+
             function getRandomSpeech() {
                 return speeches[Math.floor(Math.random() * speeches.length)];
             }
 
-            // 切换表情（轮换）
             function nextEmoji() {
                 emojiState = (emojiState + 1) % emojis.length;
                 return emojis[emojiState];
             }
 
-            // 互动响应
             function interact() {
-                // 更换表情
                 avatar.textContent = nextEmoji();
-
-                // 随机台词
                 speech.textContent = getRandomSpeech();
 
-                // 添加一个小动画（弹跳感）
                 avatar.style.transition = 'transform 0.1s';
                 avatar.style.transform = 'scale(1.2)';
-                setTimeout(() => {
+                setTimeout(function() {
                     avatar.style.transform = 'scale(1)';
                 }, 100);
 
-                // 微弱的语音气泡闪烁
                 speech.style.transition = 'background 0.15s';
                 speech.style.background = 'rgba(255, 200, 150, 0.3)';
-                setTimeout(() => {
+                setTimeout(function() {
                     speech.style.background = 'rgba(0, 0, 0, 0.25)';
                 }, 200);
             }
 
-            // 绑定点击事件（整个容器点击触发）
             container.addEventListener('click', interact);
-
-            // 触摸设备兼容（防止双击缩放干扰）
             container.addEventListener('touchstart', function(e) {
-                // 不阻止默认，仅触发互动
                 interact();
             }, { passive: true });
 
-            console.log('🐱 猫娘互动已加载，欢迎戳戳！');
+            console.log('\uD83D\uDC31 猫娘已加载 (混淆版)');
         })();
     </script>
 </body>
