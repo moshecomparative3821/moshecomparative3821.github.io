@@ -31,7 +31,7 @@
             padding: 1.5rem;
         }
 
-        /* 仅保留文字卡片，半透明衬底让大字更清晰 */
+        /* 文字卡片，半透明衬底 */
         .brand-card {
             background-color: rgba(20, 20, 30, 0.55);
             backdrop-filter: blur(4px);
@@ -52,7 +52,83 @@
             letter-spacing: 6px;
             text-shadow: 4px 4px 16px rgba(0, 0, 0, 0.85);
             word-break: keep-all;
-            margin: 0;
+            margin: 0 0 0.6rem 0;
+        }
+
+        /* 副标题 / 装饰线 */
+        .sub {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 1rem;
+        }
+
+        /* 按钮容器：一行两列，自适应 */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        /* 按钮通用样式 */
+        .btn {
+            flex: 1 1 180px;
+            /* 至少 180px 宽，平均分配 */
+            min-width: 140px;
+            padding: 0.9rem 1.2rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        /* 两个按钮各自微调色彩倾向（保留透明感） */
+        .btn-nekobounce {
+            background: rgba(100, 180, 255, 0.20);
+            border-color: rgba(100, 180, 255, 0.35);
+        }
+        .btn-nekobounce:hover {
+            background: rgba(100, 180, 255, 0.32);
+            border-color: rgba(100, 200, 255, 0.6);
+        }
+
+        .btn-涩涩 {
+            background: rgba(255, 120, 180, 0.20);
+            border-color: rgba(255, 120, 180, 0.35);
+        }
+        .btn-涩涩:hover {
+            background: rgba(255, 120, 180, 0.32);
+            border-color: rgba(255, 150, 200, 0.6);
         }
 
         /* 移动端适配 */
@@ -64,12 +140,45 @@
             .brand-card {
                 padding: 1.8rem 1.5rem;
             }
+            .btn {
+                font-size: 1.1rem;
+                padding: 0.75rem 1rem;
+                min-width: 120px;
+                flex: 1 1 140px;
+            }
+            .sub {
+                font-size: 0.75rem;
+                letter-spacing: 4px;
+            }
+        }
+
+        /* 极小屏 ( < 400px ) 按钮堆叠为列 */
+        @media (max-width: 400px) {
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn {
+                flex: 1 1 auto;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="brand-card">
         <h1>北门NB</h1>
+        <div class="sub">✦ 不止于北门 ✦</div>
+
+        <!-- 按钮组 -->
+        <div class="button-group">
+            <a href="https://nekobounce.qzz.io/" target="_blank" rel="noopener noreferrer" class="btn btn-nekobounce">
+                🐾 nekobounce
+            </a>
+            <a href="https://www.pixiv.net/users/104419511" target="_blank" rel="noopener noreferrer" class="btn btn-涩涩">
+                ✦ 涩涩
+            </a>
+        </div>
     </div>
 </body>
 </html>
