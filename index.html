@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>背景图片教学 · 极简示例</title>
+  <title>纯背景 · 仅图片</title>
   <style>
-    /* === 全局样式与背景图片核心设置 === */
+    /* === 全局重置：只保留背景，无任何额外元素 === */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      /* 背景图片：使用一张示例图片（来自免费图库，可替换） */
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      /* 背景图片：使用与原来相同的示例图片 */
       background-image: url('https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEZrIlqimvLuWJ2rLTqJ60yWkBSfQIGsQACcicAAkreUVS3acnz8W7Itj0E.png');
       
       /* 背景不重复 */
@@ -28,139 +30,39 @@
       /* 背景位置居中 */
       background-position: center center;
       
-      /* 字体与基础文字颜色，保证在图片上可读 */
-      font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
-      color: #ffffff;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      /* 完全透明、无任何文字或装饰 */
+      color: transparent;
+      background-color: transparent;
       
-      /* 最小高度撑开视口，方便查看背景 */
-      min-height: 100vh;
-      
-      /* 弹性布局让内容居中，更容易演示 */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-      /* 内边距 */
-      padding: 1.5rem;
+      /* 确保没有任何内边距或外边距干扰 */
+      padding: 0;
+      margin: 0;
     }
 
-    /* 内容卡片：半透明深色背景，让文字更清晰，不影响背景展示 */
-    .instruction-card {
-      background-color: rgba(20, 20, 30, 0.65);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      padding: 2.2rem 2.5rem;
-      border-radius: 32px;
-      max-width: 700px;
-      width: 100%;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      text-align: center;
+    /* 移除所有可能的内容容器 — 不留任何可见元素 */
+    /* 没有任何 .instruction-card, h1, p, ul, li, code, .btn-style 等 */
+    /* 甚至 body 的 display: flex 也去掉，让背景自然铺满 */
+    body {
+      display: block;      /* 重置为 block，不干扰背景 */
+      align-items: normal;
+      justify-content: normal;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    .step-highlight {
-      background: rgba(255, 255, 255, 0.2);
-      display: inline-block;
-      padding: 0.2rem 0.8rem;
-      border-radius: 40px;
-      font-weight: 500;
-    }
-
-    p, li {
-      font-size: 1.15rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-
-    ul {
-      text-align: left;
-      margin: 1.5rem 0;
-      padding-left: 1.8rem;
-    }
-
-    code {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 0.25rem 0.6rem;
-      border-radius: 12px;
-      font-family: 'Fira Code', 'Cascadia Code', Consolas, monospace;
-      font-size: 0.95rem;
-      color: #ffe484;
-      border: 1px solid rgba(255, 230, 150, 0.4);
-    }
-
-    .btn-style {
-      display: inline-block;
-      background: #ffffff;
-      color: #1a1a2e;
-      padding: 0.7rem 1.8rem;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 0.5rem;
-      transition: 0.2s;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
-      border: none;
-    }
-
-    .btn-style:hover {
-      background: #ffe484;
-      transform: translateY(-3px);
-      box-shadow: 0 14px 22px rgba(0,0,0,0.4);
-      cursor: pointer;
-    }
-
-    /* 响应式调整 */
-    @media (max-width: 550px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .instruction-card {
-        padding: 1.8rem 1.5rem;
-      }
-    }
+    /* 完全隐藏任何可能存在的脚本或额外内容（但本页面没有任何内容） */
+    /* 保留 script 但不影响视觉 — 已无任何 DOM 元素 */
   </style>
 </head>
 <body>
-  <div class="instruction-card">
-    <h1>🌄 如何更换背景图片</h1>
-    <p>
-      当前页面使用了一张示例背景图 (<code>picsum.photos</code> 随机风景)。<br>
-      你只需要修改 CSS 中 <code>background-image</code> 的链接即可。
-    </p>
-    
-    <ul>
-      <li><strong>方法一：</strong>使用网络图片 —— 将 <code>url('...')</code> 内的地址换成你自己的图片链接。</li>
-      <li><strong>方法二：</strong>使用本地图片 —— 将图片文件放在与 <code>index.html</code> 相同的文件夹内，然后写相对路径，例如 <code>url('我的背景.jpg')</code>。</li>
-      <li><strong>推荐设置：</strong>保留 <code>background-size: cover;</code> 让图片自动铺满且不变形。</li>
-    </ul>
-
-    <p style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 20px;">
-      ⚡ <strong>核心代码位置：</strong>在 <code>&lt;style&gt;</code> 标签中的 <code>body</code> 选择器里。<br>
-      修改 <code>background-image: url('你的图片地址');</code> 即可完成替换。
-    </p>
-    
-    <!-- 为了演示方便，额外放一个小提示按钮（纯视觉） -->
-    <div style="margin-top: 1.8rem;">
-      <span class="btn-style" onclick="alert('打开 style 标签，找到 background-image，替换 url 链接即可！')">🔍 快速提示</span>
-    </div>
-    <p style="font-size: 0.9rem; margin-top: 1.2rem; opacity: 0.8;">
-      * 当前背景图示例：山川河流 (来自 picsum.photos)
-    </p>
-  </div>
-
-  <!-- 极简脚本：仅用于按钮弹出提示，不涉及背景修改，完全可选 -->
+  <!-- 空 body：没有任何文字、卡片、按钮、列表、标题 -->
+  <!-- 只有背景图片通过 CSS 显示 -->
+  <!-- 删除所有之前的 instruction-card、h1、p、ul、按钮等 -->
+  <!-- 没有任何可见内容，只有纯粹背景 -->
+  
+  <!-- 极简脚本：仅用于控制台提示，不影响视觉，可保留或删除 -->
   <script>
-    // 这个脚本只是为了演示交互提示，与背景更换核心无关。
-    // 你完全可以删除整个 script 部分而不影响背景功能。
-    console.log('💡 想更换背景？打开 style 标签中的 body { background-image: url(...) } 修改即可。');
+    // 此脚本仅向控制台输出一条信息，完全不影响背景显示。
+    // 如果希望彻底无任何脚本，可以删除此 <script> 块。
+    console.log('✨ 当前页面仅保留背景图片，所有文字、卡片、按钮均已移除。');
   </script>
 </body>
 </html>
