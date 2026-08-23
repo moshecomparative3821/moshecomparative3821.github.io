@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GitHub Pages 个人网站示例 - 展示项目、技能与联系方式">
+    <title>我的GitHub.io | 个人网站</title>
+    <style>
+        /* ============ CSS变量 ============ */
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-card: #1c2128;
+            --border-color: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-orange: #d29922;
+            --accent-purple: #bc8cff;
+            --accent-pink: #f778ba;
+            --radius: 12px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============ 基础重置 ============ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-purple);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ============ 导航栏 ============ */
+        .navbar {
+            background-color: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo .octicon {
+            color: var(--accent-green);
+            font-size: 1.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.3rem 0.5rem;
+            border-radius: 8px;
+            transition: all var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background-color: rgba(88, 166, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-blue);
+            background-color: rgba(88, 166, 255, 0.15);
+        }
+
+        /* ============ 主页 Hero ============ */
+        .hero {
+            padding: 5rem 0 4rem;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 20%, rgba(88, 166, 255, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 80%, rgba(188, 140, 255, 0.06) 0%, transparent 50%);
+        }
+
+        .hero-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #58a6ff, #bc8cff, #f778ba);
+            padding: 3px;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 40px rgba(88, 166, 255, 0.25);
+        }
+
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: var(--bg-secondary);
+            border: 3px solid var(--bg-primary);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #e6edf3 0%, #58a6ff 40%, #bc8cff 70%, #f778ba 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .hero .bio {
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.6rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: #fff;
+            border-color: var(--accent-blue);
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #4a9bf5;
+            border-color: #4a9bf5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.4);
+            color: #fff;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            background-color: rgba(88, 166, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* ============ 分区标题 ============ */
+        .section {
+            padding: 3.5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-color) 0%, transparent 100%);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        /* ============ 项目卡片 ============ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-icon {
+            font-size: 1.6rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .tag-blue { background-color: rgba(88, 166, 255, 0.15); color: var(--accent-blue); }
+        .tag-green { background-color: rgba(63, 185, 80, 0.15); color: var(--accent-green); }
+        .tag-orange { background-color: rgba(210, 153, 34, 0.15); color: var(--accent-orange); }
+        .tag-purple { background-color: rgba(188, 140, 255, 0.15); color: var(--accent-purple); }
+        .tag-pink { background-color: rgba(247, 120, 186, 0.15); color: var(--accent-pink); }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* ============ 技能区域 ============ */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-badge {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all var(--transition);
+        }
+
+        .skill-badge:hover {
+            border-color: var(--accent-blue);
+            background-color: rgba(88, 166, 255, 0.08);
+            transform: scale(1.05);
+        }
+
+        /* ============ 关于区域 ============ */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .about-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+        }
+
+        .about-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-orange);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-card p, .about-card li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .about-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-card li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-card li:last-child {
+            border-bottom: none;
+        }
+
+        .about-card li::before {
+            content: '▹';
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* ============ 联系区域 ============ */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 0.7rem 1.4rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all var(--transition);
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background-color: rgba(63, 185, 80, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* ============ 页脚 ============ */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+        }
+
+        .footer a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer .heart {
+            color: var(--accent-pink);
+        }
+
+        /* ============ 响应式 ============ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .navbar .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                gap: 0.8rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .contact-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ 导航栏 ============ -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="octicon">⌥</span> 我的GitHub.io
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">首页</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============ Hero 区域 ============ -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-avatar">
+                <!-- 使用一个简单的SVG头像占位，也可替换为真实图片 -->
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%23161b22'/%3E%3Ccircle cx='60' cy='45' r='25' fill='%2358a6ff'/%3E%3Cpath d='M20 110 Q60 70 100 110' stroke='%23bc8cff' stroke-width='5' fill='none'/%3E%3C/svg%3E" alt="GitHub头像占位">
+            </div>
+            <h1>你好，我是开发者</h1>
+            <p class="tagline">🚀 开源爱好者 · 全栈工程师 · 终身学习者</p>
+            <p class="bio">
+                欢迎来到我的 GitHub Pages 个人网站。这里展示了我的一些开源项目、技术栈以及联系方式。
+                如果你对我的工作感兴趣，欢迎一起交流与合作！
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <span>📦</span> 查看项目
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-outline">
+                    <span>🐙</span> GitHub 主页
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 项目区域 ============ -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">📁 精选项目</h2>
+            <p class="section-subtitle">一些我最近在维护和开发的开源项目</p>
+            <div class="projects-grid">
+                <!-- 项目1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-icon">🖥️</span>
+                        <h3>awesome-工具集</h3>
+                    </div>
+                    <p>一个开源的命令行工具集合，包含文件管理、批量重命名、数据转换等实用功能，支持跨平台。</p>
+                    <div class="project-tags">
+                        <span class="tag tag-blue">Python</span>
+                        <span class="tag tag-orange">CLI</span>
+                        <span class="tag tag-green">MIT</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank">⭐ 125</a>
+                        <a href="https://github.com" target="_blank">🍴 23</a>
+                        <a href="https://github.com" target="_blank">📖 文档</a>
+                    </div>
+                </div>
+                <!-- 项目2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-icon">📊</span>
+                        <h3>数据可视化面板</h3>
+                    </div>
+                    <p>基于 React 和 D3.js 的实时数据可视化仪表板，支持多种图表类型和自定义主题。</p>
+                    <div class="project-tags">
+                        <span class="tag tag-purple">React</span>
+                        <span class="tag tag-pink">D3.js</span>
+                        <span class="tag tag-blue">TypeScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank">⭐ 248</a>
+                        <a href="https://github.com" target="_blank">🍴 41</a>
+                        <a href="https://github.com" target="_blank">📖 演示</a>
+                    </div>
+                </div>
+                <!-- 项目3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-icon">🤖</span>
+                        <h3>智能聊天机器人</h3>
+                    </div>
+                    <p>基于大语言模型 API 的智能聊天机器人，支持多轮对话、上下文记忆和自定义知识库。</p>
+                    <div class="project-tags">
+                        <span class="tag tag-green">Node.js</span>
+                        <span class="tag tag-orange">WebSocket</span>
+                        <span class="tag tag-purple">AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank">⭐ 187</a>
+                        <a href="https://github.com" target="_blank">🍴 35</a>
+                        <a href="https://github.com" target="_blank">📖 文档</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 技能区域 ============ -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">🛠️ 技术栈</h2>
+            <p class="section-subtitle">我常用的编程语言、框架和工具</p>
+            <div class="skills-container">
+                <span class="skill-badge">JavaScript / TypeScript</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">Vue.js</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">Express</span>
+                <span class="skill-badge">Django</span>
+                <span class="skill-badge">PostgreSQL</span>
+                <span class="skill-badge">MongoDB</span>
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">Git & GitHub</span>
+                <span class="skill-badge">CI/CD</span>
+                <span class="skill-badge">REST API</span>
+                <span class="skill-badge">GraphQL</span>
+                <span class="skill-badge">Tailwind CSS</span>
+                <span class="skill-badge">Linux</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 关于区域 ============ -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">👨‍💻 关于我</h2>
+            <p class="section-subtitle">了解更多关于我的信息</p>
+            <div class="about-content">
+                <div class="about-card">
+                    <h4>📋 个人简介</h4>
+                    <p>
+                        我是一名拥有5年经验的全栈开发者，热爱开源社区，喜欢探索新技术。
+                        工作之余喜欢写技术博客、参与黑客松，以及为开源项目做贡献。
+                    </p>
+                    <p style="margin-top:0.8rem;">
+                        我相信技术可以改变世界，也致力于通过代码创造更好的工具和体验。
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h4>🎯 我的目标</h4>
+                    <ul>
+                        <li>持续输出高质量的开源项目</li>
+                        <li>帮助更多开发者入门编程</li>
+                        <li>探索 AI 与 Web 的结合</li>
+                        <li>构建一个活跃的技术社区</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 联系区域 ============ -->
+    <section class="section" id="contact">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title" style="justify-content: center;">📬 联系我</h2>
+            <p class="section-subtitle" style="margin-bottom:2rem;">欢迎通过以下方式与我取得联系</p>
+            <div class="contact-links">
+                <a href="mailto:hello@example.com" class="contact-link">
+                    ✉️ Email
+                </a>
+                <a href="https://github.com" target="_blank" class="contact-link">
+                    🐙 GitHub
+                </a>
+                <a href="https://twitter.com" target="_blank" class="contact-link">
+                    🐦 Twitter
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="contact-link">
+                    💼 LinkedIn
+                </a>
+                <a href="https://dev.to" target="_blank" class="contact-link">
+                    ✍️ 技术博客
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 页脚 ============ -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                © 2025 我的GitHub.io · 使用 <span class="heart">❤</span> 和 GitHub Pages 构建
+                <br>
+                <span style="font-size:0.8rem;">这是一个示例网站，托管于 <a href="https://pages.github.com" target="_blank">GitHub Pages</a></span>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
