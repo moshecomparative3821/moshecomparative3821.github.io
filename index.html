@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>北门NB · 猫娘互动</title>
+
+    <!-- ===== 可爱二次元小猫 Favicon ===== -->
+    <!-- 使用内联 SVG 二次元猫娘头像，纯矢量，适配所有尺寸 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='55' r='36' fill='%23FAD9C1'/%3E%3Cpath d='M18 30 L35 6 L46 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M25 26 L35 12 L42 26 Z' fill='%23FFB6C1'/%3E%3Cpath d='M54 30 L65 6 L82 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M58 26 L65 12 L75 26 Z' fill='%23FFB6C1'/%3E%3Cellipse cx='35' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='32' cy='46' r='3' fill='white'/%3E%3Ccircle cx='38' cy='52' r='1.5' fill='white'/%3E%3Cellipse cx='65' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='62' cy='46' r='3' fill='white'/%3E%3Ccircle cx='68' cy='52' r='1.5' fill='white'/%3E%3Cpolygon points='46,59 54,59 50,63' fill='%23FF8A9B'/%3E%3Cpath d='M43 68 Q50 74 57 68' stroke='%232D2D2D' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3Cline x1='10' y1='55' x2='30' y2='59' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='10' y1='62' x2='30' y2='64' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='59' x2='90' y2='55' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='64' x2='90' y2='62' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='24' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3Cellipse cx='76' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3C/svg%3E" />
+    <!-- 兼容旧版浏览器 / iOS 备用 -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='55' r='36' fill='%23FAD9C1'/%3E%3Cpath d='M18 30 L35 6 L46 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M25 26 L35 12 L42 26 Z' fill='%23FFB6C1'/%3E%3Cpath d='M54 30 L65 6 L82 30 Z' fill='%23FAD9C1'/%3E%3Cpath d='M58 26 L65 12 L75 26 Z' fill='%23FFB6C1'/%3E%3Cellipse cx='35' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='32' cy='46' r='3' fill='white'/%3E%3Ccircle cx='38' cy='52' r='1.5' fill='white'/%3E%3Cellipse cx='65' cy='50' rx='8' ry='9' fill='%232D2D2D'/%3E%3Ccircle cx='62' cy='46' r='3' fill='white'/%3E%3Ccircle cx='68' cy='52' r='1.5' fill='white'/%3E%3Cpolygon points='46,59 54,59 50,63' fill='%23FF8A9B'/%3E%3Cpath d='M43 68 Q50 74 57 68' stroke='%232D2D2D' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3Cline x1='10' y1='55' x2='30' y2='59' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='10' y1='62' x2='30' y2='64' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='59' x2='90' y2='55' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='70' y1='64' x2='90' y2='62' stroke='%232D2D2D' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='24' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3Cellipse cx='76' cy='64' rx='6' ry='4' fill='%23FFB6C1' opacity='0.55'/%3E%3C/svg%3E" />
+
     <style>
         /* 全局重置 */
         * {
@@ -69,7 +76,8 @@
             gap: 1rem;
             justify-content: center;
             margin-top: 0.5rem;
-            margin-bottom: 1.8rem; /* 与游戏区拉开距离 */
+            margin-bottom: 1.8rem;
+            /* 与游戏区拉开距离 */
         }
 
         .btn {
@@ -337,14 +345,6 @@
                 // 不阻止默认，仅触发互动
                 interact();
             }, { passive: true });
-
-            // 初始化：显示一句随机台词（但保留“戳戳我～”作为初始，也可随机）
-            // 我们保留初始提示，但为了趣味，页面加载后自动显示一句？
-            // 也可以让用户首次点击才改变，这里保持“戳戳我～”更显引导。
-            // 但为了不显得死板，可设定几秒后随机变化，或者不自动。
-            // 决定保持初始“戳戳我～”，符合引导。
-
-            // 额外：如果用户连续点击太快，防抖？无需，简单互动。
 
             console.log('🐱 猫娘互动已加载，欢迎戳戳！');
         })();
