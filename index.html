@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>北门NB · 猫娘互动</title>
     <style>
-        /* ===== 全局重置 ===== */
+        /* 全局重置 */
         * {
             margin: 0;
             padding: 0;
@@ -20,852 +20,334 @@
             background-position: center center;
             font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
             color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.2rem;
+            padding: 1.5rem;
         }
 
-        /* ===== 主卡片 ===== */
+        /* 卡片容器 */
         .brand-card {
-            background-color: rgba(20, 20, 30, 0.60);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            padding: 2rem 2.2rem 2.5rem;
-            border-radius: 36px;
-            max-width: 580px;
+            background-color: rgba(20, 20, 30, 0.55);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 2.2rem 3rem;
+            border-radius: 32px;
+            max-width: 700px;
             width: 100%;
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             text-align: center;
-            transition: padding 0.3s;
+            transition: all 0.2s;
         }
 
-        /* ===== 标题 ===== */
-        .brand-title {
-            font-size: 4.2rem;
+        /* 北门NB 大字 */
+        h1 {
+            font-size: 5.5rem;
             font-weight: 900;
             letter-spacing: 6px;
-            text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
-            margin-bottom: 0.3rem;
-            user-select: none;
-        }
-        .brand-title small {
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            opacity: 0.6;
-            display: block;
-            margin-top: -6px;
+            text-shadow: 4px 4px 16px rgba(0, 0, 0, 0.85);
+            word-break: keep-all;
+            margin: 0 0 0.6rem 0;
         }
 
-        /* ===== 游戏容器 ===== */
-        .game-container {
-            margin-top: 1.2rem;
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 28px;
-            padding: 1.8rem 1.2rem 1.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+        .sub {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 1rem;
         }
 
-        /* ===== 猫娘展示区 ===== */
-        .catgirl-display {
-            position: relative;
-            width: 100%;
-            max-width: 280px;
-            margin: 0 auto 0.8rem;
-            aspect-ratio: 1/1;
-            touch-action: none;
-            cursor: pointer;
-        }
-
-        /* ---- 猫娘 SVG (用内联SVG绘制，精致且可控) ---- */
-        .catgirl-svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-            filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
-            transition: transform 0.25s ease;
-        }
-        .catgirl-display:active .catgirl-svg {
-            transform: scale(0.96);
-        }
-
-        /* 猫娘各部位动画 */
-        .catgirl-svg .ear {
-            transition: transform 0.3s ease;
-            transform-origin: 50% 30%;
-        }
-        .catgirl-display:hover .catgirl-svg .ear {
-            transform: rotate(-2deg) scale(1.02);
-        }
-        .catgirl-display:hover .catgirl-svg .ear-right {
-            transform: rotate(2deg) scale(1.02);
-        }
-
-        .catgirl-svg .eye {
-            transition: all 0.35s ease;
-        }
-        .catgirl-svg .pupil {
-            transition: all 0.35s ease;
-        }
-        .catgirl-svg .mouth {
-            transition: all 0.35s ease;
-        }
-        .catgirl-svg .blush {
-            transition: opacity 0.4s ease;
-        }
-        .catgirl-svg .whisker {
-            transition: all 0.3s ease;
-        }
-
-        /* 情绪类：开心 */
-        .catgirl-svg.happy .eye {
-            transform: scaleY(0.3) translateY(-4px);
-        }
-        .catgirl-svg.happy .pupil {
-            opacity: 0;
-        }
-        .catgirl-svg.happy .mouth {
-            d: path("M 100 108 Q 110 122 120 108");
-            stroke-width: 2.5;
-        }
-        .catgirl-svg.happy .blush {
-            opacity: 0.8;
-        }
-        .catgirl-svg.happy .whisker {
-            transform: rotate(3deg);
-        }
-
-        /* 情绪：害羞 */
-        .catgirl-svg.shy .eye {
-            transform: scaleY(0.5) translateY(2px);
-        }
-        .catgirl-svg.shy .pupil {
-            transform: translateY(4px);
-        }
-        .catgirl-svg.shy .mouth {
-            d: path("M 95 110 Q 100 116 105 110 Q 110 116 115 110");
-            stroke-width: 2;
-        }
-        .catgirl-svg.shy .blush {
-            opacity: 1;
-            r: 18;
-        }
-        .catgirl-svg.shy .ear {
-            transform: rotate(-6deg);
-        }
-        .catgirl-svg.shy .ear-right {
-            transform: rotate(6deg);
-        }
-
-        /* 情绪：生气 */
-        .catgirl-svg.angry .eye {
-            transform: scaleX(0.8) scaleY(0.7);
-        }
-        .catgirl-svg.angry .pupil {
-            transform: translate(0, 2px);
-        }
-        .catgirl-svg.angry .mouth {
-            d: path("M 92 110 Q 100 104 108 110 Q 116 104 120 110");
-            stroke-width: 2.5;
-            stroke: #ff6b6b;
-        }
-        .catgirl-svg.angry .blush {
-            opacity: 0.3;
-        }
-        .catgirl-svg.angry .eyebrow-left {
-            transform: rotate(-12deg) translateY(-6px);
-        }
-        .catgirl-svg.angry .eyebrow-right {
-            transform: rotate(12deg) translateY(-6px);
-        }
-        .catgirl-svg.angry .whisker {
-            transform: rotate(-4deg) scale(0.9);
-        }
-
-        /* 情绪：惊讶 */
-        .catgirl-svg.surprised .eye {
-            transform: scale(1.3);
-        }
-        .catgirl-svg.surprised .pupil {
-            transform: scale(0.7);
-        }
-        .catgirl-svg.surprised .mouth {
-            d: path("M 95 106 Q 100 120 105 106 Q 110 120 115 106");
-            stroke-width: 2;
-            stroke: #ff6b6b;
-        }
-        .catgirl-svg.surprised .blush {
-            opacity: 0.4;
-        }
-        .catgirl-svg.surprised .whisker {
-            transform: rotate(-2deg) scale(0.95);
-        }
-
-        /* 情绪：平静 (默认) */
-        .catgirl-svg.calm .eye {
-            transform: scale(1);
-        }
-        .catgirl-svg.calm .pupil {
-            transform: scale(1);
-        }
-        .catgirl-svg.calm .mouth {
-            d: path("M 98 110 Q 108 116 118 110");
-            stroke-width: 2;
-        }
-        .catgirl-svg.calm .blush {
-            opacity: 0.5;
-        }
-        .catgirl-svg.calm .whisker {
-            transform: rotate(0);
-        }
-        .catgirl-svg.calm .eyebrow-left {
-            transform: rotate(0);
-        }
-        .catgirl-svg.calm .eyebrow-right {
-            transform: rotate(0);
-        }
-
-        /* ===== 对话气泡 ===== */
-        .speech-bubble {
-            min-height: 3rem;
-            padding: 0.6rem 1.2rem;
-            margin: 0.2rem auto 0.8rem;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 40px;
-            display: inline-block;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #fff;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
-            max-width: 90%;
-            letter-spacing: 0.5px;
-            word-break: break-word;
-        }
-        .speech-bubble .emoji {
-            margin-right: 6px;
-        }
-
-        /* ===== 好感度条 ===== */
-        .stats {
+        /* 按钮组（原样保留，仅微调间距） */
+        .button-group {
             display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+            margin-bottom: 1.8rem; /* 与游戏区拉开距离 */
+        }
+
+        .btn {
+            flex: 1 1 180px;
+            min-width: 140px;
+            padding: 0.9rem 1.2rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem 1rem;
-            flex-wrap: wrap;
-            margin: 0.6rem 0 1rem;
-            font-size: 0.95rem;
-            background: rgba(0, 0, 0, 0.25);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .stats-label {
-            opacity: 0.7;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-        .stats-bar-wrap {
-            flex: 1;
-            min-width: 100px;
-            max-width: 180px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
-        }
-        .stats-bar-fill {
-            height: 100%;
-            width: 50%;
-            border-radius: 20px;
-            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
-            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 0 12px rgba(255, 154, 158, 0.4);
-        }
-        .stats-number {
-            font-weight: 700;
-            min-width: 2.6rem;
-            text-align: center;
-            color: #fad0c4;
-            font-size: 0.9rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            font-family: inherit;
         }
 
-        /* ===== 互动按钮区 ===== */
-        .interactions {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.6rem;
-            margin-top: 0.6rem;
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .interact-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.10);
-            border-radius: 20px;
-            padding: 0.7rem 0.2rem;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(4px);
+        .btn:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        .btn-nekobounce {
+            background: rgba(100, 180, 255, 0.20);
+            border-color: rgba(100, 180, 255, 0.35);
+        }
+        .btn-nekobounce:hover {
+            background: rgba(100, 180, 255, 0.32);
+            border-color: rgba(100, 200, 255, 0.6);
+        }
+
+        .btn-涩涩 {
+            background: rgba(255, 120, 180, 0.20);
+            border-color: rgba(255, 120, 180, 0.35);
+        }
+        .btn-涩涩:hover {
+            background: rgba(255, 120, 180, 0.32);
+            border-color: rgba(255, 150, 200, 0.6);
+        }
+
+        /* ========= 猫娘互动游戏区 ========= */
+        .game-area {
+            margin-top: 0.8rem;
+            padding: 1.2rem 1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .game-area .cat-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
-            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-            touch-action: manipulation;
-            user-select: none;
-            line-height: 1.3;
-        }
-        .interact-btn .icon {
-            font-size: 1.6rem;
-            line-height: 1;
-        }
-        .interact-btn .label {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.4rem 0;
         }
 
-        .interact-btn:hover {
-            background: rgba(255, 255, 255, 0.18);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-        .interact-btn:active {
-            transform: scale(0.92);
-            transition-duration: 0.05s;
+        .cat-avatar {
+            font-size: 4.8rem;
+            line-height: 1.2;
+            transition: transform 0.2s ease;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
         }
 
-        /* 每个按钮主题色 (hover时) */
-        .interact-btn.pet:hover {
-            background: rgba(255, 183, 197, 0.30);
-            border-color: #ffb7c5;
-        }
-        .interact-btn.feed:hover {
-            background: rgba(255, 213, 128, 0.30);
-            border-color: #ffd580;
-        }
-        .interact-btn.play:hover {
-            background: rgba(130, 224, 255, 0.30);
-            border-color: #82e0ff;
-        }
-        .interact-btn.praise:hover {
-            background: rgba(255, 154, 214, 0.30);
-            border-color: #ff9ad6;
+        .cat-avatar:hover {
+            transform: scale(1.08) rotate(-4deg);
         }
 
-        /* ===== 响应式 ===== */
+        .cat-avatar:active {
+            transform: scale(0.92) rotate(2deg);
+        }
+
+        .cat-speech {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-height: 3.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            color: #fff6e8;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        /* 点击提示小字 */
+        .cat-hint {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            letter-spacing: 2px;
+            margin-top: 0.2rem;
+        }
+
+        /* 移动端适配 */
         @media (max-width: 550px) {
-            .brand-card {
-                padding: 1.2rem 1rem 1.8rem;
-                border-radius: 28px;
+            h1 {
+                font-size: 3.8rem;
+                letter-spacing: 3px;
             }
-            .brand-title {
-                font-size: 3rem;
+            .brand-card {
+                padding: 1.8rem 1.5rem;
+            }
+            .btn {
+                font-size: 1.1rem;
+                padding: 0.75rem 1rem;
+                min-width: 120px;
+                flex: 1 1 140px;
+            }
+            .sub {
+                font-size: 0.75rem;
                 letter-spacing: 4px;
             }
-            .brand-title small {
-                font-size: 0.8rem;
+            .cat-avatar {
+                font-size: 3.8rem;
             }
-            .game-container {
-                padding: 1.2rem 0.6rem 1.2rem;
+            .cat-speech {
+                font-size: 1rem;
+                padding: 0.4rem 1.2rem;
+                min-height: 2.8rem;
             }
-            .catgirl-display {
-                max-width: 200px;
-            }
-            .interactions {
-                gap: 0.4rem;
-            }
-            .interact-btn {
-                padding: 0.5rem 0.1rem;
-                border-radius: 16px;
-            }
-            .interact-btn .icon {
-                font-size: 1.3rem;
-            }
-            .interact-btn .label {
-                font-size: 0.6rem;
-            }
-            .speech-bubble {
-                font-size: 0.95rem;
-                padding: 0.4rem 1rem;
-                min-height: 2.4rem;
-            }
-            .stats {
-                font-size: 0.8rem;
-                padding: 0.3rem 0.8rem;
-            }
-            .stats-bar-wrap {
-                min-width: 70px;
-                max-width: 120px;
-                height: 6px;
+            .game-area {
+                padding: 1rem 0.8rem;
             }
         }
 
         @media (max-width: 400px) {
-            .brand-title {
-                font-size: 2.4rem;
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
             }
-            .catgirl-display {
-                max-width: 160px;
-            }
-            .interact-btn .icon {
-                font-size: 1.1rem;
-            }
-            .interact-btn .label {
-                font-size: 0.5rem;
-            }
-            .interact-btn {
-                padding: 0.4rem 0.1rem;
-            }
-        }
-
-        /* ===== 点击涟漪反馈 ===== */
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(0);
-            animation: rippleAnim 0.6s ease-out forwards;
-            pointer-events: none;
-        }
-        @keyframes rippleAnim {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
-        /* ===== 浮动爱心特效 ===== */
-        .float-heart {
-            position: fixed;
-            pointer-events: none;
-            font-size: 1.8rem;
-            z-index: 999;
-            animation: heartFloat 1.2s ease-out forwards;
-            text-shadow: 0 4px 20px rgba(255, 80, 120, 0.6);
-        }
-        @keyframes heartFloat {
-            0% {
-                opacity: 1;
-                transform: translateY(0) scale(0.5) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-140px) scale(1.4) rotate(30deg);
+            .btn {
+                flex: 1 1 auto;
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-
     <div class="brand-card">
-        <!-- 标题 -->
-        <div class="brand-title">
-            北门NB
-            <small>🐱 猫娘互动 · 治愈时光</small>
+        <h1>北门NB</h1>
+        <div class="sub">✦ 不止于北门 ✦</div>
+
+        <!-- 按钮组（完全保留原样） -->
+        <div class="button-group">
+            <a href="https://nekobounce.qzz.io/" target="_blank" rel="noopener noreferrer" class="btn btn-nekobounce">
+                🐾 nekobounce
+            </a>
+            <a href="https://www.pixiv.net/users/104419511" target="_blank" rel="noopener noreferrer" class="btn btn-涩涩">
+                ✦ 涩涩
+            </a>
         </div>
 
-        <!-- 游戏区 -->
-        <div class="game-container">
-            <!-- 猫娘展示 (点击触发摸头) -->
-            <div class="catgirl-display" id="catgirlDisplay" title="摸摸猫娘～">
-                <!-- 内联 SVG 猫娘 -->
-                <svg class="catgirl-svg calm" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" id="catgirlSvg">
-                    <!-- 阴影 -->
-                    <ellipse cx="100" cy="190" rx="64" ry="8" fill="rgba(0,0,0,0.15)" />
-
-                    <!-- 左耳 -->
-                    <g class="ear ear-left">
-                        <polygon points="42,32 20,78 68,68" fill="#f5d0c5" stroke="#e8b8a8" stroke-width="1.5" />
-                        <polygon points="44,40 30,70 60,64" fill="#ffb7c5" opacity="0.7" />
-                    </g>
-                    <!-- 右耳 -->
-                    <g class="ear ear-right">
-                        <polygon points="158,32 180,78 132,68" fill="#f5d0c5" stroke="#e8b8a8" stroke-width="1.5" />
-                        <polygon points="156,40 170,70 140,64" fill="#ffb7c5" opacity="0.7" />
-                    </g>
-
-                    <!-- 脸 -->
-                    <circle cx="100" cy="100" r="68" fill="#fce4dc" stroke="#ecc8bc" stroke-width="1.5" />
-
-                    <!-- 眉毛 (用于生气表情) -->
-                    <line class="eyebrow-left" x1="64" y1="68" x2="82" y2="72" stroke="#8b6b5e" stroke-width="2.5"
-                    stroke-linecap="round" transform-origin="73 70" />
-                    <line class="eyebrow-right" x1="136" y1="68" x2="118" y2="72" stroke="#8b6b5e" stroke-width="2.5"
-                    stroke-linecap="round" transform-origin="127 70" />
-
-                    <!-- 左眼 -->
-                    <ellipse class="eye" cx="78" cy="90" rx="16" ry="18" fill="#ffffff" stroke="#d4b0a0" stroke-width="1.2"
-                    transform-origin="78 90" />
-                    <circle class="pupil" cx="78" cy="92" r="8" fill="#4a2f2a" transform-origin="78 92" />
-                    <circle cx="74" cy="86" r="3" fill="#ffffff" opacity="0.8" />
-
-                    <!-- 右眼 -->
-                    <ellipse class="eye" cx="122" cy="90" rx="16" ry="18" fill="#ffffff" stroke="#d4b0a0" stroke-width="1.2"
-                    transform-origin="122 90" />
-                    <circle class="pupil" cx="122" cy="92" r="8" fill="#4a2f2a" transform-origin="122 92" />
-                    <circle cx="118" cy="86" r="3" fill="#ffffff" opacity="0.8" />
-
-                    <!-- 腮红 -->
-                    <circle class="blush" cx="58" cy="110" r="14" fill="#ffb7c5" opacity="0.5" />
-                    <circle class="blush" cx="142" cy="110" r="14" fill="#ffb7c5" opacity="0.5" />
-
-                    <!-- 嘴巴 (默认微笑) -->
-                    <path class="mouth" d="M 98 110 Q 108 116 118 110" fill="none" stroke="#d47a7a" stroke-width="2"
-                    stroke-linecap="round" />
-
-                    <!-- 猫须 左 -->
-                    <line class="whisker whisker-l1" x1="42" y1="100" x2="16" y2="94" stroke="#d4c0b8" stroke-width="1.5"
-                    stroke-linecap="round" />
-                    <line class="whisker whisker-l2" x1="40" y1="108" x2="14" y2="110" stroke="#d4c0b8" stroke-width="1.5"
-                    stroke-linecap="round" />
-                    <!-- 猫须 右 -->
-                    <line class="whisker whisker-r1" x1="158" y1="100" x2="184" y2="94" stroke="#d4c0b8" stroke-width="1.5"
-                    stroke-linecap="round" />
-                    <line class="whisker whisker-r2" x1="160" y1="108" x2="186" y2="110" stroke="#d4c0b8" stroke-width="1.5"
-                    stroke-linecap="round" />
-
-                    <!-- 小鼻子 (装饰) -->
-                    <ellipse cx="100" cy="103" rx="4" ry="3" fill="#f5a0a0" opacity="0.6" />
-                </svg>
-            </div>
-
-            <!-- 对话气泡 -->
-            <div class="speech-bubble" id="speechBubble">
-                <span class="emoji">👋</span> 来和我玩吧～
-            </div>
-
-            <!-- 好感度 -->
-            <div class="stats">
-                <span class="stats-label">💕 好感</span>
-                <div class="stats-bar-wrap">
-                    <div class="stats-bar-fill" id="favorFill" style="width:50%;"></div>
-                </div>
-                <span class="stats-number" id="favorNumber">50</span>
-            </div>
-
-            <!-- 互动按钮 -->
-            <div class="interactions">
-                <button class="interact-btn pet" data-action="pet">
-                    <span class="icon">🖐️</span>
-                    <span class="label">摸头</span>
-                </button>
-                <button class="interact-btn feed" data-action="feed">
-                    <span class="icon">🍣</span>
-                    <span class="label">喂食</span>
-                </button>
-                <button class="interact-btn play" data-action="play">
-                    <span class="icon">🎣</span>
-                    <span class="label">逗猫</span>
-                </button>
-                <button class="interact-btn praise" data-action="praise">
-                    <span class="icon">💕</span>
-                    <span class="label">夸夸</span>
-                </button>
+        <!-- ===== 猫娘互动游戏 ===== -->
+        <div class="game-area" id="gameArea">
+            <div class="cat-container" id="catContainer">
+                <div class="cat-avatar" id="catAvatar">😺</div>
+                <div class="cat-speech" id="catSpeech">戳戳我～</div>
+                <div class="cat-hint">✦ 点击猫娘互动 ✦</div>
             </div>
         </div>
     </div>
 
     <script>
         (function() {
-            'use strict';
+            // 猫娘台词库（可自由扩充）
+            const speeches = [
+                "喵～ 你好呀！",
+                "今天也元气满满！",
+                "最喜欢你啦 ❤️",
+                "要一起玩吗？",
+                "摸摸头～ (´▽`ʃ♡)ƪ",
+                "北门最棒了！",
+                "嘿嘿，好开心～",
+                "给你小鱼干 🐟",
+                "晚上好喵～",
+                "我超可爱的！",
+                "抱抱～ (*≧▽≦)",
+                "你点我干嘛啦 >_<",
+                "再点我就要生气了！",
+                "骗你的，我才不生气呢",
+                "一起去看星星吧 ✨",
+                "喵喵喵～",
+                "今天的月亮好圆",
+                "要听我唱歌吗？",
+                "我是你的猫娘哦",
+                "最喜欢这个网页了！"
+            ];
 
-            // ---- DOM 引用 ----
-            const svg = document.getElementById('catgirlSvg');
-            const display = document.getElementById('catgirlDisplay');
-            const bubble = document.getElementById('speechBubble');
-            const favorFill = document.getElementById('favorFill');
-            const favorNumber = document.getElementById('favorNumber');
+            // DOM 元素
+            const avatar = document.getElementById('catAvatar');
+            const speech = document.getElementById('catSpeech');
+            const container = document.getElementById('catContainer');
 
-            // ---- 状态 ----
-            let favor = 50; // 0 ~ 100
-            let currentEmotion = 'calm';
-            let isAnimating = false;
+            // 当前状态（用于表情切换）
+            let emojiState = 0;
+            const emojis = ['😺', '😸', '😻', '😽', '🙀', '😹', '🐱', '😼'];
 
-            // ---- 情绪映射 ----
-            const EMOTION_CLASSES = ['calm', 'happy', 'shy', 'angry', 'surprised'];
-
-            // ---- 互动反馈配置 ----
-            const REACTIONS = {
-                pet: {
-                    emotions: ['happy', 'shy'],
-                    messages: [
-                        '😊 喵～好舒服...',
-                        '🥰 再摸摸嘛～',
-                        '💕 最喜欢被摸头了！',
-                        '😌 呼噜呼噜～'
-                    ],
-                    favorGain: 3,
-                    hearts: ['❤️', '💕', '✨']
-                },
-                feed: {
-                    emotions: ['happy', 'calm'],
-                    messages: [
-                        '🍣 好吃！再来一口～',
-                        '😋 谢谢你～',
-                        '🐟 寿司最棒了！',
-                        '💖 好幸福呀～'
-                    ],
-                    favorGain: 4,
-                    hearts: ['❤️', '💖', '🌟']
-                },
-                play: {
-                    emotions: ['surprised', 'happy'],
-                    messages: [
-                        '🎣 哇！好好玩！',
-                        '😆 再来再来！',
-                        '🐾 追不到我～嘿嘿',
-                        '✨ 好开心呀！'
-                    ],
-                    favorGain: 5,
-                    hearts: ['❤️', '💖', '🎉']
-                },
-                praise: {
-                    emotions: ['shy', 'happy'],
-                    messages: [
-                        '😳 哎呀，夸得我不好意思了...',
-                        '🌸 真的吗？好开心～',
-                        '💕 你也是最好的！',
-                        '🥹 呜呜，好感动～'
-                    ],
-                    favorGain: 3,
-                    hearts: ['❤️', '💗', '🌸']
-                }
-            };
-
-            // ---- 工具函数 ----
-            function pickRandom(arr) {
-                return arr[Math.floor(Math.random() * arr.length)];
+            // 随机获取一句台词
+            function getRandomSpeech() {
+                return speeches[Math.floor(Math.random() * speeches.length)];
             }
 
-            // ---- 设置情绪 ----
-            function setEmotion(emotion) {
-                if (isAnimating) return;
-                // 移除所有情绪类
-                EMOTION_CLASSES.forEach(cls => svg.classList.remove(cls));
-                // 添加新情绪
-                if (EMOTION_CLASSES.includes(emotion)) {
-                    svg.classList.add(emotion);
-                    currentEmotion = emotion;
-                } else {
-                    svg.classList.add('calm');
-                    currentEmotion = 'calm';
-                }
+            // 切换表情（轮换）
+            function nextEmoji() {
+                emojiState = (emojiState + 1) % emojis.length;
+                return emojis[emojiState];
             }
 
-            // ---- 更新好感度 ----
-            function updateFavor(delta) {
-                favor = Math.min(100, Math.max(0, favor + delta));
-                const pct = favor;
-                favorFill.style.width = pct + '%';
-                favorNumber.textContent = Math.round(pct);
+            // 互动响应
+            function interact() {
+                // 更换表情
+                avatar.textContent = nextEmoji();
 
-                // 根据好感度改变条颜色
-                if (pct < 30) {
-                    favorFill.style.background = 'linear-gradient(90deg, #ff9a9e, #fad0c4)';
-                } else if (pct < 60) {
-                    favorFill.style.background = 'linear-gradient(90deg, #fbc2eb, #a6c1ee)';
-                } else {
-                    favorFill.style.background = 'linear-gradient(90deg, #fbc2eb, #fad0c4, #ffd1ff)';
-                }
-                return pct;
-            }
+                // 随机台词
+                speech.textContent = getRandomSpeech();
 
-            // ---- 显示对话 ----
-            function say(text, emoji) {
-                bubble.innerHTML = `<span class="emoji">${emoji || '💬'}</span> ${text}`;
-                // 轻微弹跳动画
-                bubble.style.transform = 'scale(0.92)';
-                requestAnimationFrame(() => {
-                    bubble.style.transform = 'scale(1)';
-                });
-            }
-
-            // ---- 浮动爱心特效 ----
-            function spawnHearts(count, x, y) {
-                const emojis = ['❤️', '💕', '💖', '✨', '🌸', '💗'];
-                for (let i = 0; i < count; i++) {
-                    const el = document.createElement('div');
-                    el.className = 'float-heart';
-                    el.textContent = pickRandom(emojis);
-                    const offsetX = (Math.random() - 0.5) * 100;
-                    const offsetY = (Math.random() - 0.5) * 60 - 20;
-                    el.style.left = (x + offsetX) + 'px';
-                    el.style.top = (y + offsetY) + 'px';
-                    el.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
-                    el.style.animationDuration = (0.9 + Math.random() * 0.6) + 's';
-                    document.body.appendChild(el);
-                    setTimeout(() => el.remove(), 1500);
-                }
-            }
-
-            // ---- 执行互动 ----
-            function interact(action) {
-                if (isAnimating) return;
-                isAnimating = true;
-
-                const config = REACTIONS[action];
-                if (!config) {
-                    isAnimating = false;
-                    return;
-                }
-
-                // 1. 选择情绪 (可能保持当前情绪)
-                let newEmotion = pickRandom(config.emotions);
-                // 有一定概率保持不变 (增加自然感)
-                if (Math.random() < 0.3) newEmotion = currentEmotion;
-                setEmotion(newEmotion);
-
-                // 2. 显示消息
-                const msg = pickRandom(config.messages);
-                const emoji = msg.match(/^.{1,2}/)?.[0] || '💬';
-                say(msg, emoji);
-
-                // 3. 好感度变化 (有随机波动)
-                const gain = config.favorGain * (0.7 + Math.random() * 0.6);
-                const finalGain = Math.round(gain);
-                updateFavor(finalGain);
-
-                // 4. 爱心特效 (从猫娘位置飞出)
-                const rect = display.getBoundingClientRect();
-                const cx = rect.left + rect.width / 2;
-                const cy = rect.top + rect.height / 2;
-                const heartCount = 2 + Math.floor(Math.random() * 3);
-                spawnHearts(heartCount, cx - 20, cy - 20);
-
-                // 5. 猫娘轻微弹跳 (通过transform)
-                svg.style.transition = 'transform 0.15s ease';
-                svg.style.transform = 'scale(0.92)';
+                // 添加一个小动画（弹跳感）
+                avatar.style.transition = 'transform 0.1s';
+                avatar.style.transform = 'scale(1.2)';
                 setTimeout(() => {
-                    svg.style.transform = 'scale(1)';
-                }, 120);
+                    avatar.style.transform = 'scale(1)';
+                }, 100);
 
-                // 6. 解锁
+                // 微弱的语音气泡闪烁
+                speech.style.transition = 'background 0.15s';
+                speech.style.background = 'rgba(255, 200, 150, 0.3)';
                 setTimeout(() => {
-                    isAnimating = false;
-                }, 400);
-
-                // 7. 如果好感度满，特殊庆祝
-                if (favor >= 100) {
-                    setTimeout(() => {
-                        say('💖 好感度 MAX！最喜欢你啦！！', '🎉');
-                        spawnHearts(8, cx - 40, cy - 40);
-                    }, 500);
-                }
+                    speech.style.background = 'rgba(0, 0, 0, 0.25)';
+                }, 200);
             }
 
-            // ---- 摸头 (点击猫娘) ----
-            function handlePet() {
-                interact('pet');
-            }
+            // 绑定点击事件（整个容器点击触发）
+            container.addEventListener('click', interact);
 
-            // ---- 按钮事件绑定 ----
-            document.querySelectorAll('.interact-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const action = this.dataset.action;
-                    if (action) interact(action);
-                    // 按钮点击反馈
-                    this.style.transform = 'scale(0.90)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-                // 触摸优化
-                btn.addEventListener('touchstart', function(e) {
-                    // 防止双击缩放干扰
-                }, { passive: true });
-            });
-
-            // ---- 点击猫娘 = 摸头 ----
-            display.addEventListener('click', function(e) {
-                handlePet();
-                // 涟漪
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const ripple = document.createElement('div');
-                ripple.className = 'ripple';
-                const size = 20;
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = (x - size / 2) + 'px';
-                ripple.style.top = (y - size / 2) + 'px';
-                this.style.position = 'relative';
-                this.appendChild(ripple);
-                setTimeout(() => ripple.remove(), 700);
-            });
-
-            // ---- 自动打招呼 ----
-            let greetTimer = null;
-
-            function randomGreet() {
-                const greets = [
-                    '👋 今天也想和你玩～',
-                    '😺 喵～你来了！',
-                    '🌸 好想被摸摸呀',
-                    '💕 最喜欢你了！',
-                    '🌟 一起玩吧～'
-                ];
-                if (!isAnimating && Math.random() < 0.3) {
-                    say(pickRandom(greets));
-                }
-            }
-
-            // 每15~25秒随机打招呼
-            function scheduleGreet() {
-                if (greetTimer) clearTimeout(greetTimer);
-                const delay = 15000 + Math.random() * 12000;
-                greetTimer = setTimeout(() => {
-                    randomGreet();
-                    scheduleGreet();
-                }, delay);
-            }
-            scheduleGreet();
-
-            // ---- 初始状态 ----
-            setEmotion('calm');
-            updateFavor(0);
-            // 延迟显示欢迎
-            setTimeout(() => {
-                say('👋 你好～我是猫娘小北！', '🐱');
-            }, 600);
-
-            // ---- 窗口失焦时减少资源 ----
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    if (greetTimer) clearTimeout(greetTimer);
-                } else {
-                    scheduleGreet();
-                }
-            });
-
-            // ---- 触屏设备长按提示 ----
-            let longPressTimer = null;
-            display.addEventListener('touchstart', function(e) {
-                longPressTimer = setTimeout(() => {
-                    // 长按触发摸头 (已经有点击事件了，这里只是补充反馈)
-                }, 500);
-            }, { passive: true });
-            display.addEventListener('touchend', function() {
-                if (longPressTimer) {
-                    clearTimeout(longPressTimer);
-                    longPressTimer = null;
-                }
+            // 触摸设备兼容（防止双击缩放干扰）
+            container.addEventListener('touchstart', function(e) {
+                // 不阻止默认，仅触发互动
+                interact();
             }, { passive: true });
 
-            console.log('🐱 猫娘互动已启动！ 摸摸她吧～');
+            // 初始化：显示一句随机台词（但保留“戳戳我～”作为初始，也可随机）
+            // 我们保留初始提示，但为了趣味，页面加载后自动显示一句？
+            // 也可以让用户首次点击才改变，这里保持“戳戳我～”更显引导。
+            // 但为了不显得死板，可设定几秒后随机变化，或者不自动。
+            // 决定保持初始“戳戳我～”，符合引导。
+
+            // 额外：如果用户连续点击太快，防抖？无需，简单互动。
+
+            console.log('🐱 猫娘互动已加载，欢迎戳戳！');
         })();
     </script>
-
 </body>
 </html>
